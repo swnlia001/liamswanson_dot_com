@@ -61,14 +61,19 @@ h1 {
 }
 
 /* ECG row: trace | text | trace, wiped left to right like a monitor sweep */
+/* Full screen width, breaking out of main's side padding */
 .ecg-stack {
   display: grid;
-  width: min(100%, 960px);
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
 }
 
+/* Equal side columns keep the text at the exact screen centre;
+   the traces fill the rest and are cropped at the screen edges. */
 .ecg-row {
   grid-area: 1 / 1;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: clamp(0.4rem, 2.5vw, 1rem);
   animation: sweep var(--cycle) linear infinite backwards;
@@ -81,9 +86,9 @@ h1 {
 
 /* Height scales with the screen; "slice" keeps the beat shape and shows more beats */
 .ecg {
-  flex: 1 1 0;
+  display: block;
+  width: 100%;
   min-width: 0;
-  max-width: 400px;
   height: clamp(18px, 6vw, 40px);
 }
 
@@ -97,7 +102,6 @@ h1 {
 }
 
 .soon {
-  flex: 0 0 auto;
   font-size: clamp(0.7rem, 3.4vw, 1.35rem);
   font-weight: 300;
   letter-spacing: 0.15em;
