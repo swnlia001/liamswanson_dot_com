@@ -1,0 +1,125 @@
+:root {
+  --bg: #1e293b;
+  --ivory: #f5f1e3;
+  --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --cycle: 8.5s;   /* one copy: draw 3s + hold 0.5s + erase 3s + hidden 2s */
+  --offset: 4.25s; /* start of next sweep = 3.5s + 25% of the 3s erase */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ivory);
+  font-family: var(--font);
+  overflow-x: hidden;
+}
+
+/* Circuit background (colours and opacity live in images/circuit.svg) */
+body {
+  background-image: url("../images/circuit.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.75rem;
+  padding: 2rem 16px;
+  text-align: center;
+}
+
+h1 {
+  font-size: clamp(1.5rem, 4.4vw, 2.75rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.15;
+}
+
+/* ECG row: trace | text | trace, wiped left to right like a monitor sweep */
+.ecg-stack {
+  display: grid;
+  width: min(100%, 960px);
+}
+
+.ecg-row {
+  grid-area: 1 / 1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  animation: sweep var(--cycle) linear infinite backwards;
+}
+
+/* Next sweep starts once the erase wipe has cleared 25% of the previous one */
+.ecg-row-next {
+  animation-delay: var(--offset);
+}
+
+.ecg {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 400px;
+  height: 40px;
+}
+
+.ecg path {
+  fill: none;
+  stroke: var(--ivory);
+  stroke-width: 1.25;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.soon {
+  flex: 0 0 auto;
+  font-size: clamp(0.9rem, 2.2vw, 1.35rem);
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: lowercase;
+  white-space: nowrap;
+  opacity: 0.8;
+}
+
+/* Per copy: draw in 3s, hold 0.5s, erase 3s, hidden 2s (8.5s total).
+   Draw and erase run at the same speed, so a constant gap trails the trace. */
+@keyframes sweep {
+  0%      { clip-path: inset(-12px 100% -12px 0); }
+  35.29%  { clip-path: inset(-12px 0 -12px 0); }
+  41.18%  { clip-path: inset(-12px 0 -12px 0); }
+  76.47%  { clip-path: inset(-12px 0 -12px 100%); }
+  100%    { clip-path: inset(-12px 0 -12px 100%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ecg-row {
+    animation: none;
+  }
+  .ecg-row-next {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .ecg-row {
+    gap: 0.5rem;
+  }
+  .soon {
+    letter-spacing: 0.12em;
+  }
+}

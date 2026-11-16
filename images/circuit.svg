@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <!-- Circuit background. Nothing is drawn in the central band (y 330-570) where the text sits. -->
+  <g opacity="0.3" fill="#f5f1e3" stroke="#f5f1e3" stroke-width="2">
+    <g fill="none" stroke-linecap="square" stroke-linejoin="miter">
+      <!-- Left -->
+      <path d="M0 60 H100 V100 H240"/>
+      <path d="M0 140 H180 V260 H340 V200 H520"/>
+      <path d="M0 640 H220 V700 H400 V650 H560"/>
+      <path d="M0 800 H160 V760 H360 V840 H520"/>
+      <!-- Right (mirrored) -->
+      <path d="M1600 60 H1500 V100 H1360"/>
+      <path d="M1600 140 H1420 V260 H1260 V200 H1080"/>
+      <path d="M1600 640 H1380 V700 H1200 V650 H1040"/>
+      <path d="M1600 800 H1440 V760 H1240 V840 H1080"/>
+      <!-- Top and bottom accents -->
+      <path d="M640 0 V70 H760 V120"/>
+      <path d="M960 0 V50 H860 V100"/>
+      <path d="M700 900 V820 H820 V770"/>
+      <path d="M900 900 V840 H1000 V790"/>
+    </g>
+    <!-- Solid nodes -->
+    <g stroke="none">
+      <circle cx="100" cy="100" r="5"/>
+      <circle cx="180" cy="260" r="5"/>
+      <circle cx="220" cy="700" r="5"/>
+      <circle cx="160" cy="760" r="5"/>
+      <circle cx="1500" cy="100" r="5"/>
+      <circle cx="1420" cy="260" r="5"/>
+      <circle cx="1380" cy="700" r="5"/>
+      <circle cx="1440" cy="760" r="5"/>
+      <circle cx="760" cy="70" r="5"/>
+      <circle cx="860" cy="50" r="5"/>
+      <circle cx="820" cy="820" r="5"/>
+      <circle cx="1000" cy="840" r="5"/>
+    </g>
+    <!-- Open nodes -->
+    <g fill="#1e293b">
+      <circle cx="240" cy="100" r="8"/>
+      <circle cx="520" cy="200" r="8"/>
+      <circle cx="560" cy="650" r="8"/>
+      <circle cx="520" cy="840" r="8"/>
+      <circle cx="1360" cy="100" r="8"/>
+      <circle cx="1080" cy="200" r="8"/>
+      <circle cx="1040" cy="650" r="8"/>
+      <circle cx="1080" cy="840" r="8"/>
+      <circle cx="760" cy="120" r="8"/>
+      <circle cx="860" cy="100" r="8"/>
+      <circle cx="820" cy="770" r="8"/>
+      <circle cx="1000" cy="790" r="8"/>
+    </g>
+  </g>
+</svg>
