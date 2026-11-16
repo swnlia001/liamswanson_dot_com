@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1600">
+  <!-- Portrait circuit background for tall screens. Nothing is drawn in the central band (y 600-1000) where the text sits. -->
+  <g opacity="0.3" fill="#f5f1e3" stroke="#f5f1e3" stroke-width="2">
+    <g fill="none" stroke-linecap="square" stroke-linejoin="miter">
+      <!-- Upper left -->
+      <path d="M0 160 H120 V240 H280 V180 H400"/>
+      <path d="M0 380 H160 V300 H320"/>
+      <path d="M0 520 H100 V460 H240"/>
+      <!-- Upper right (mirrored) -->
+      <path d="M900 160 H780 V240 H620 V180 H500"/>
+      <path d="M900 380 H740 V300 H580"/>
+      <path d="M900 520 H800 V460 H660"/>
+      <!-- Top accents -->
+      <path d="M380 0 V70 H460 V110"/>
+      <path d="M560 0 V50 H520"/>
+      <!-- Lower left -->
+      <path d="M0 1100 H140 V1170 H300 V1120 H420"/>
+      <path d="M0 1300 H180 V1380 H340"/>
+      <path d="M0 1480 H100 V1420 H240"/>
+      <!-- Lower right (mirrored) -->
+      <path d="M900 1100 H760 V1170 H600 V1120 H480"/>
+      <path d="M900 1300 H720 V1380 H560"/>
+      <path d="M900 1480 H800 V1420 H660"/>
+      <!-- Bottom accents -->
+      <path d="M400 1600 V1530 H500 V1490"/>
+    </g>
+    <!-- Solid nodes -->
+    <g stroke="none">
+      <circle cx="120" cy="240" r="5"/>
+      <circle cx="160" cy="300" r="5"/>
+      <circle cx="100" cy="460" r="5"/>
+      <circle cx="780" cy="240" r="5"/>
+      <circle cx="740" cy="300" r="5"/>
+      <circle cx="800" cy="460" r="5"/>
+      <circle cx="460" cy="70" r="5"/>
+      <circle cx="140" cy="1170" r="5"/>
+      <circle cx="180" cy="1380" r="5"/>
+      <circle cx="100" cy="1420" r="5"/>
+      <circle cx="760" cy="1170" r="5"/>
+      <circle cx="720" cy="1380" r="5"/>
+      <circle cx="800" cy="1420" r="5"/>
+      <circle cx="500" cy="1530" r="5"/>
+    </g>
+    <!-- Open nodes -->
+    <g fill="#1e293b">
+      <circle cx="400" cy="180" r="8"/>
+      <circle cx="320" cy="300" r="8"/>
+      <circle cx="240" cy="460" r="8"/>
+      <circle cx="500" cy="180" r="8"/>
+      <circle cx="580" cy="300" r="8"/>
+      <circle cx="660" cy="460" r="8"/>
+      <circle cx="460" cy="110" r="8"/>
+      <circle cx="520" cy="50" r="8"/>
+      <circle cx="420" cy="1120" r="8"/>
+      <circle cx="340" cy="1380" r="8"/>
+      <circle cx="240" cy="1420" r="8"/>
+      <circle cx="480" cy="1120" r="8"/>
+      <circle cx="560" cy="1380" r="8"/>
+      <circle cx="660" cy="1420" r="8"/>
+      <circle cx="500" cy="1490" r="8"/>
+    </g>
+  </g>
+</svg>

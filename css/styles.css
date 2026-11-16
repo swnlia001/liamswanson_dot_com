@@ -18,34 +18,43 @@ body {
 }
 
 body {
-  background: var(--bg);
+  background-color: var(--bg);
   color: var(--ivory);
   font-family: var(--font);
   overflow-x: hidden;
 }
 
-/* Circuit background (colours and opacity live in images/circuit.svg) */
-body {
-  background-image: url("../images/circuit.svg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+/* Circuit background on a fixed layer that always matches the screen
+   (background-attachment: fixed is unreliable on mobile browsers).
+   Colours and opacity live in the SVG files. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: url("../images/circuit.svg") center / cover no-repeat;
+}
+
+@media (orientation: portrait) {
+  body::before {
+    background-image: url("../images/circuit-portrait.svg");
+  }
 }
 
 main {
   min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.75rem;
+  gap: clamp(1rem, 5vw, 1.75rem);
   padding: 2rem 16px;
   text-align: center;
 }
 
 h1 {
-  font-size: clamp(1.5rem, 4.4vw, 2.75rem);
+  font-size: clamp(1.1rem, 6vw, 2.75rem);
   font-weight: 400;
   letter-spacing: 0;
   line-height: 1.15;
@@ -61,7 +70,7 @@ h1 {
   grid-area: 1 / 1;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: clamp(0.4rem, 2.5vw, 1rem);
   animation: sweep var(--cycle) linear infinite backwards;
 }
 
@@ -70,11 +79,12 @@ h1 {
   animation-delay: var(--offset);
 }
 
+/* Height scales with the screen; "slice" keeps the beat shape and shows more beats */
 .ecg {
   flex: 1 1 0;
   min-width: 0;
   max-width: 400px;
-  height: 40px;
+  height: clamp(18px, 6vw, 40px);
 }
 
 .ecg path {
@@ -88,9 +98,9 @@ h1 {
 
 .soon {
   flex: 0 0 auto;
-  font-size: clamp(0.9rem, 2.2vw, 1.35rem);
+  font-size: clamp(0.7rem, 3.4vw, 1.35rem);
   font-weight: 300;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
   text-transform: lowercase;
   white-space: nowrap;
   opacity: 0.8;
@@ -99,11 +109,11 @@ h1 {
 /* Per copy: draw in 3s, hold 0.5s, erase 3s, hidden 2s (8.5s total).
    Draw and erase run at the same speed, so a constant gap trails the trace. */
 @keyframes sweep {
-  0%      { clip-path: inset(-12px 100% -12px 0); }
-  35.29%  { clip-path: inset(-12px 0 -12px 0); }
-  41.18%  { clip-path: inset(-12px 0 -12px 0); }
-  76.47%  { clip-path: inset(-12px 0 -12px 100%); }
-  100%    { clip-path: inset(-12px 0 -12px 100%); }
+  0%      { clip-path: inset(-25% 100% -25% 0); }
+  35.29%  { clip-path: inset(-25% 0 -25% 0); }
+  41.18%  { clip-path: inset(-25% 0 -25% 0); }
+  76.47%  { clip-path: inset(-25% 0 -25% 100%); }
+  100%    { clip-path: inset(-25% 0 -25% 100%); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -112,14 +122,5 @@ h1 {
   }
   .ecg-row-next {
     display: none;
-  }
-}
-
-@media (max-width: 480px) {
-  .ecg-row {
-    gap: 0.5rem;
-  }
-  .soon {
-    letter-spacing: 0.12em;
   }
 }
